@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 # Script to auto-start the MCP server
 # This script can be used with system startup mechanisms like systemd, launchd, etc.
