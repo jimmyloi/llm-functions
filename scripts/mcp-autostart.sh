@@ -4,8 +4,7 @@
 # This script can be used with system startup mechanisms like systemd, launchd, etc.
 
 # Get the directory where this script is located
-# What is BASH_SOURCE here. AI?
-SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+SCRIPT_DIR="$( cd "$( dirname "$0" )" && pwd )"
 ROOT_DIR="$( cd "$SCRIPT_DIR/.." && pwd )"
 
 # Source environment variables if .env file exists
