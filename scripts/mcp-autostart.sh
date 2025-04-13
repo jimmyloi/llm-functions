@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Make sure PATH is set
+source $HOME/.zshrc
+
 # Script to auto-start the MCP server
 # This script can be used with system startup mechanisms like systemd, launchd, etc.
 
