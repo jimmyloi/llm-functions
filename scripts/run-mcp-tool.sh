@@ -72,11 +72,17 @@ run() {
         fi
     fi
     if [[ -t 1 ]] && [[ "$skip_confirm" -ne 1 ]]; then
-        # Ring terminal bell to draw user's attention before confirmation
-        echo -ne "\a"
+        # Ring terminal bell or send notification to draw user's attention before confirmation
+        # Check if terminal-notifier exists and send a notification
+        if command -v terminal-notifier &> /dev/null; then
+            terminal-notifier -message "Confirmation required to run tool '$tool_name'" -title "LLM Functions" -sound default &
+        else
+            # Fallback to bell if terminal-notifier is not found
+            echo -ne "\a"
+        fi
         read -r -p "Are you sure you want to continue? [Y/n] " ans
         if [[ "$ans" == "N" || "$ans" == "n" ]]; then
-            echo "error: canceled!" 2>&1
+            echo "error: canceled!" >&2 # Send error message to stderr
             exit 1
         fi
     fi
