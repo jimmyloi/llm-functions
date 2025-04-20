@@ -72,6 +72,8 @@ run() {
         fi
     fi
     if [[ -t 1 ]] && [[ "$skip_confirm" -ne 1 ]]; then
+        # Ring terminal bell to draw user's attention before confirmation
+        echo -ne "\a"
         read -r -p "Are you sure you want to continue? [Y/n] " ans
         if [[ "$ans" == "N" || "$ans" == "n" ]]; then
             echo "error: canceled!" 2>&1
